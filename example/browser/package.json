@@ -1,0 +1,9 @@
+{
+  "name": "twirp-browser-test",
+  "dependencies": {
+    "google-protobuf": "^3.5.0",
+    "twirp": "^0.0.5",
+    "webpack": "^3.10.0",
+    "whatwg-fetch": "^2.0.3"
+  }
+}

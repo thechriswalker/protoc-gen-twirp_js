@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>twirp browser js test</title>
+</head>
+
+<body>
+    <style>
+        .error {
+            color: red
+        }
+
+        #hatbox {
+            height: 400px;
+            overflow: auto;
+            border: 1px solid #eee;
+            padding: 0.5rem;
+        }
+    </style>
+    <p>This randomly calls
+        <code>makeHat</code>, repeatedly.</p>
+    <p>Occasionally you should see it try to get a 0 inch hat, which errors.</p>
+    <p>Check out the network tab</p>
+    <p>add
+        <code><a href="?json">?json</a></code> to the URL to use JSON for the requests.</p>
+    <p>remove
+        <code><a href="?">?json<a/> from the URL to use Protobuf for the requests.</p>
+    <div id="hatbox" />
+    <script src="bundle.js"></script>
+</body>
+
+</html>
