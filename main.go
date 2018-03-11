@@ -12,9 +12,9 @@ import (
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/protoc-gen-go/descriptor"
 	plugin "github.com/golang/protobuf/protoc-gen-go/plugin"
-	"github.com/thechriswalker/protoc-gen-twirp_js/internal/gen"
-	"github.com/thechriswalker/protoc-gen-twirp_js/internal/gen/stringutils"
-	"github.com/thechriswalker/protoc-gen-twirp_js/internal/gen/typemap"
+	"github.com/juntaki/protoc-gen-twirp_js/internal/gen"
+	"github.com/juntaki/protoc-gen-twirp_js/internal/gen/stringutils"
+	"github.com/juntaki/protoc-gen-twirp_js/internal/gen/typemap"
 )
 
 func main() {
@@ -88,10 +88,37 @@ func (g *generator) generateProtobufClient(file *descriptor.FileDescriptorProto,
 	g.P(`    return {`)
 	// for each method...
 	l := len(service.Method)
-	for i, method := range service.Method {
+	for _, method := range service.Method {
 		methName := methodName(method)
 		jsMethodName := strings.ToLower(methName[0:1]) + methName[1:]
 		inputName, outputName := methodTypesNames(method)
+		// we need field definitions for each field
+		// then we don't have to rely on
+
+		comments, err := g.reg.MethodComments(file, service, method)
+		if err == nil && comments.Leading != "" {
+			g.P(`        /**`)
+			g.printComments(comments, `         * `)
+			g.P(`         */`)
+		}
+		g.P(
+			`        `,
+			jsMethodName,
+			`: function(data) { return rpc(`,
+			strconv.Quote(methName),
+			`, rpc.buildMessage(pb.`,
+			inputName,
+			`, data), pb.`,
+			outputName,
+			`); },`,
+		)
+	}
+
+	// to use raw parameter
+	for i, method := range service.Method {
+		methName := methodName(method)
+		jsMethodName := strings.ToLower(methName[0:1]) + methName[1:]
+		_, outputName := methodTypesNames(method)
 		// we need field definitions for each field
 		// then we don't have to rely on
 
@@ -108,11 +135,9 @@ func (g *generator) generateProtobufClient(file *descriptor.FileDescriptorProto,
 		g.P(
 			`        `,
 			jsMethodName,
-			`: function(data) { return rpc(`,
+			`Raw: function(data) { return rpc(`,
 			strconv.Quote(methName),
-			`, rpc.buildMessage(pb.`,
-			inputName,
-			`, data), pb.`,
+			`, data, pb.`,
 			outputName,
 			`); }`,
 			trailingComma,
