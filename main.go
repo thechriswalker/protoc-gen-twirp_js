@@ -91,7 +91,7 @@ func (g *generator) generateProtobufClient(file *descriptor.FileDescriptorProto,
 	for i, method := range service.Method {
 		methName := methodName(method)
 		jsMethodName := strings.ToLower(methName[0:1]) + methName[1:]
-		inputName, outputName := methodTypesNames(method)
+		_, outputName := methodTypesNames(method)
 		// we need field definitions for each field
 		// then we don't have to rely on
 
@@ -110,9 +110,7 @@ func (g *generator) generateProtobufClient(file *descriptor.FileDescriptorProto,
 			jsMethodName,
 			`: function(data) { return rpc(`,
 			strconv.Quote(methName),
-			`, rpc.buildMessage(pb.`,
-			inputName,
-			`, data), pb.`,
+			`, data, pb.`,
 			outputName,
 			`); }`,
 			trailingComma,
