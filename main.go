@@ -12,9 +12,9 @@ import (
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/protoc-gen-go/descriptor"
 	plugin "github.com/golang/protobuf/protoc-gen-go/plugin"
-	"github.com/juntaki/protoc-gen-twirp_js/internal/gen"
-	"github.com/juntaki/protoc-gen-twirp_js/internal/gen/stringutils"
-	"github.com/juntaki/protoc-gen-twirp_js/internal/gen/typemap"
+	"github.com/thechriswalker/protoc-gen-twirp_js/internal/gen"
+	"github.com/thechriswalker/protoc-gen-twirp_js/internal/gen/stringutils"
+	"github.com/thechriswalker/protoc-gen-twirp_js/internal/gen/typemap"
 )
 
 func main() {
