@@ -88,33 +88,6 @@ func (g *generator) generateProtobufClient(file *descriptor.FileDescriptorProto,
 	g.P(`    return {`)
 	// for each method...
 	l := len(service.Method)
-	for _, method := range service.Method {
-		methName := methodName(method)
-		jsMethodName := strings.ToLower(methName[0:1]) + methName[1:]
-		inputName, outputName := methodTypesNames(method)
-		// we need field definitions for each field
-		// then we don't have to rely on
-
-		comments, err := g.reg.MethodComments(file, service, method)
-		if err == nil && comments.Leading != "" {
-			g.P(`        /**`)
-			g.printComments(comments, `         * `)
-			g.P(`         */`)
-		}
-		g.P(
-			`        `,
-			jsMethodName,
-			`: function(data) { return rpc(`,
-			strconv.Quote(methName),
-			`, rpc.buildMessage(pb.`,
-			inputName,
-			`, data), pb.`,
-			outputName,
-			`); },`,
-		)
-	}
-
-	// to use raw parameter
 	for i, method := range service.Method {
 		methName := methodName(method)
 		jsMethodName := strings.ToLower(methName[0:1]) + methName[1:]
@@ -135,7 +108,7 @@ func (g *generator) generateProtobufClient(file *descriptor.FileDescriptorProto,
 		g.P(
 			`        `,
 			jsMethodName,
-			`Raw: function(data) { return rpc(`,
+			`: function(data) { return rpc(`,
 			strconv.Quote(methName),
 			`, data, pb.`,
 			outputName,
