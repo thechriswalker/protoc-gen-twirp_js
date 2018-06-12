@@ -6,6 +6,7 @@
 var createClient = require("twirp");
 // import our protobuf definitions
 var pb = require("./service_pb.js");
+Object.assign(module.exports, pb);
 
 /**
  * A Haberdasher makes hats for clients.
@@ -16,7 +17,7 @@ module.exports.createHaberdasherClient = function(baseurl, extraHeaders, useJSON
         /**
          * MakeHat produces a hat of mysterious, randomly-selected color!
          */
-        makeHat: function(data) { return rpc("MakeHat", rpc.buildMessage(pb.Size, data), pb.Hat); }
+        makeHat: function(data) { return rpc("MakeHat", data, pb.Hat); }
     }
 }
 

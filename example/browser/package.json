@@ -5,5 +5,8 @@
     "twirp": "^0.0.5",
     "webpack": "^3.10.0",
     "whatwg-fetch": "^2.0.3"
+  },
+  "peerDependencies": {
+    "node-fetch": "^2.1.2"
   }
 }

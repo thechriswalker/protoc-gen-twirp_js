@@ -1,8 +1,6 @@
 /**
  * @fileoverview
  * @enhanceable
- * @suppress {messageConventions} JS Compiler reports an error if a variable or
- *     field starts with 'MSG_' and isn't a translatable message.
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
@@ -56,13 +54,12 @@ proto.twitch.twirp.example.Hat.prototype.toObject = function(opt_includeInstance
  *     http://goto/soy-param-migration
  * @param {!proto.twitch.twirp.example.Hat} msg The msg instance to transform.
  * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.twitch.twirp.example.Hat.toObject = function(includeInstance, msg) {
   var f, obj = {
-    size: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    color: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    name: jspb.Message.getFieldWithDefault(msg, 3, "")
+    size: msg.getSize(),
+    color: msg.getColor(),
+    name: msg.getName()
   };
 
   if (includeInstance) {
@@ -121,40 +118,49 @@ proto.twitch.twirp.example.Hat.deserializeBinaryFromReader = function(msg, reade
 
 
 /**
+ * Class method variant: serializes the given message to binary data
+ * (in protobuf wire format), writing to the given BinaryWriter.
+ * @param {!proto.twitch.twirp.example.Hat} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.twitch.twirp.example.Hat.serializeBinaryToWriter = function(message, writer) {
+  message.serializeBinaryToWriter(writer);
+};
+
+
+/**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
 proto.twitch.twirp.example.Hat.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.twitch.twirp.example.Hat.serializeBinaryToWriter(this, writer);
+  this.serializeBinaryToWriter(writer);
   return writer.getResultBuffer();
 };
 
 
 /**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.twitch.twirp.example.Hat} message
+ * Serializes the message to binary data (in protobuf wire format),
+ * writing to the given BinaryWriter.
  * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.twitch.twirp.example.Hat.serializeBinaryToWriter = function(message, writer) {
+proto.twitch.twirp.example.Hat.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = message.getSize();
+  f = this.getSize();
   if (f !== 0) {
     writer.writeInt32(
       1,
       f
     );
   }
-  f = message.getColor();
+  f = this.getColor();
   if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
-  f = message.getName();
+  f = this.getName();
   if (f.length > 0) {
     writer.writeString(
       3,
@@ -165,17 +171,26 @@ proto.twitch.twirp.example.Hat.serializeBinaryToWriter = function(message, write
 
 
 /**
+ * Creates a deep clone of this proto. No data is shared with the original.
+ * @return {!proto.twitch.twirp.example.Hat} The clone.
+ */
+proto.twitch.twirp.example.Hat.prototype.cloneMessage = function() {
+  return /** @type {!proto.twitch.twirp.example.Hat} */ (jspb.Message.cloneMessage(this));
+};
+
+
+/**
  * optional int32 size = 1;
  * @return {number}
  */
 proto.twitch.twirp.example.Hat.prototype.getSize = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 1, 0));
 };
 
 
-/** @param {number} value */
+/** @param {number} value  */
 proto.twitch.twirp.example.Hat.prototype.setSize = function(value) {
-  jspb.Message.setProto3IntField(this, 1, value);
+  jspb.Message.setField(this, 1, value);
 };
 
 
@@ -184,13 +199,13 @@ proto.twitch.twirp.example.Hat.prototype.setSize = function(value) {
  * @return {string}
  */
 proto.twitch.twirp.example.Hat.prototype.getColor = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 2, ""));
 };
 
 
-/** @param {string} value */
+/** @param {string} value  */
 proto.twitch.twirp.example.Hat.prototype.setColor = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  jspb.Message.setField(this, 2, value);
 };
 
 
@@ -199,13 +214,13 @@ proto.twitch.twirp.example.Hat.prototype.setColor = function(value) {
  * @return {string}
  */
 proto.twitch.twirp.example.Hat.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 3, ""));
 };
 
 
-/** @param {string} value */
+/** @param {string} value  */
 proto.twitch.twirp.example.Hat.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  jspb.Message.setField(this, 3, value);
 };
 
 
@@ -252,11 +267,10 @@ proto.twitch.twirp.example.Size.prototype.toObject = function(opt_includeInstanc
  *     http://goto/soy-param-migration
  * @param {!proto.twitch.twirp.example.Size} msg The msg instance to transform.
  * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
  */
 proto.twitch.twirp.example.Size.toObject = function(includeInstance, msg) {
   var f, obj = {
-    inches: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    inches: msg.getInches()
   };
 
   if (includeInstance) {
@@ -307,26 +321,35 @@ proto.twitch.twirp.example.Size.deserializeBinaryFromReader = function(msg, read
 
 
 /**
+ * Class method variant: serializes the given message to binary data
+ * (in protobuf wire format), writing to the given BinaryWriter.
+ * @param {!proto.twitch.twirp.example.Size} message
+ * @param {!jspb.BinaryWriter} writer
+ */
+proto.twitch.twirp.example.Size.serializeBinaryToWriter = function(message, writer) {
+  message.serializeBinaryToWriter(writer);
+};
+
+
+/**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
 proto.twitch.twirp.example.Size.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.twitch.twirp.example.Size.serializeBinaryToWriter(this, writer);
+  this.serializeBinaryToWriter(writer);
   return writer.getResultBuffer();
 };
 
 
 /**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.twitch.twirp.example.Size} message
+ * Serializes the message to binary data (in protobuf wire format),
+ * writing to the given BinaryWriter.
  * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.twitch.twirp.example.Size.serializeBinaryToWriter = function(message, writer) {
+proto.twitch.twirp.example.Size.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = message.getInches();
+  f = this.getInches();
   if (f !== 0) {
     writer.writeInt32(
       1,
@@ -337,17 +360,26 @@ proto.twitch.twirp.example.Size.serializeBinaryToWriter = function(message, writ
 
 
 /**
+ * Creates a deep clone of this proto. No data is shared with the original.
+ * @return {!proto.twitch.twirp.example.Size} The clone.
+ */
+proto.twitch.twirp.example.Size.prototype.cloneMessage = function() {
+  return /** @type {!proto.twitch.twirp.example.Size} */ (jspb.Message.cloneMessage(this));
+};
+
+
+/**
  * optional int32 inches = 1;
  * @return {number}
  */
 proto.twitch.twirp.example.Size.prototype.getInches = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {number} */ (jspb.Message.getFieldProto3(this, 1, 0));
 };
 
 
-/** @param {number} value */
+/** @param {number} value  */
 proto.twitch.twirp.example.Size.prototype.setInches = function(value) {
-  jspb.Message.setProto3IntField(this, 1, value);
+  jspb.Message.setField(this, 1, value);
 };
 
 

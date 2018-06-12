@@ -61,6 +61,7 @@ func (g *generator) generateFile(file *descriptor.FileDescriptorProto) *plugin.C
 	g.P(`var createClient = require("twirp");`)
 	g.P(`// import our protobuf definitions`)
 	g.P(`var pb = require(`, strconv.Quote("./"+baseFileName(file)+".js"), `);`)
+  g.P(`Object.assign(module.exports, pb);`)
 	g.P()
 	for _, service := range file.Service {
 		g.generateProtobufClient(file, service)
