@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "google-protobuf": "^3.5.0",
-    "node-fetch": "^2.0.0-alpha.9",
+    "node-fetch": "^2.6.7",
     "twirp": "^0.0.5"
   }
 }
